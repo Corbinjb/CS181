@@ -27,20 +27,20 @@ public class Reducer1 extends Reducer<Text, Text, Text, Text> {
 		
 		for(Text val: values) {
 			String input  = val.toString();
-			String[] valueList = input.split("\t"); 
+			String[] vList = input.split("\t"); 
 			
-			if(valueList.length == 2) {
-				vVal += Double.parseDouble(valueList[1]);
+			if(vList.length == 2) {
+				vVal += Double.parseDouble(vList[1]);
 			}else {
-				mList.add(valueList[1] + "\t" + valueList[2]);
+				mList.add(vList[1] + "\t" + vList[2]);
 			}
 		}
 		
 		for(String mval: mList) {
-			String[] mvalList = mval.split("\t");
-			Double product = Double.parseDouble(mvalList[1]) * vVal;
+			String[] mvlist = mval.split("\t");
+			Double Pair = Double.parseDouble(mvlist[1]) * vVal;
 			
-			context.write(new Text(mvalList[0]), new Text(Double.toString(product)));
+			context.write(new Text(mvlist[0]), new Text(Double.toString(Pair)));
 		}
 	}
 

@@ -24,12 +24,12 @@ public class Mapper1 extends Mapper<LongWritable, Text, Text, Text> {
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { 
 		
 		String input  = value.toString();
-		String[] indicesAndValue = input.split("\t"); // tab delimited
+		String[] IndVal = input.split("\t"); // tab delimited
 	
-		if(indicesAndValue[0].equals("M")) {
-			context.write(new Text(indicesAndValue[2]), new Text("M" + "\t" + indicesAndValue[1] + "\t" + indicesAndValue[3]));
+		if(IndVal[0].equals("M")) {
+			context.write(new Text(IndVal[2]), new Text("M" + "\t" + IndVal[1] + "\t" + IndVal[3]));
 		}else {
-			context.write(new Text(indicesAndValue[1]), new Text("V" + "\t" + indicesAndValue[2]));
+			context.write(new Text(IndVal[1]), new Text("V" + "\t" + IndVal[2]));
 		}
 	}
 }
