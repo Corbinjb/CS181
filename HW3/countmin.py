@@ -21,7 +21,7 @@ class CountMinSketch(object):
 		hash = []
 		for i in range(self.depth):
 			ind = mmh3.hash(item, i) % self.width
-			hashs.append(self.CMS[i][ind])
+			hash.append(self.CMS[i][ind])
 		return min(hashs)
 
 	def merge(self, CountMin):
